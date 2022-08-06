@@ -1,5 +1,6 @@
 package co.com.sofka.model.trainingleague;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
@@ -19,5 +20,5 @@ public class TrainingLeagueDocument {
     @Id
     private String id;
     private String description;
-    private Date dateConvocationEnd;
+    private LocalDate dateConvocationEnd;
 }

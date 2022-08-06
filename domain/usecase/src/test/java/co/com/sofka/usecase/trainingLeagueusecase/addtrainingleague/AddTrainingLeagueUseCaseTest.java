@@ -1,42 +1,41 @@
 package co.com.sofka.usecase.trainingLeagueusecase.addtrainingleague;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.mockito.Mockito;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.boot.test.mock.mockito.SpyBean;
 
 import co.com.sofka.model.trainingleague.TrainingLeague;
 import co.com.sofka.model.trainingleague.gateways.TrainingLeagueRepository;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
-import static org.mockito.Mockito.*;
+import java.time.LocalDate;
+import java.util.Date;
 
-import java.sql.Date;
+import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 class AddTrainingLeagueUseCaseTest {
 
-    @MockBean
-    TrainingLeagueRepository repository;
-
-    @SpyBean
+    @InjectMocks
     AddTrainingLeagueUseCase addTrainingLeagueUseCase;
 
-    @BeforeEach
-    public void setUp() {
-        repository = mock(TrainingLeagueRepository.class);
-        addTrainingLeagueUseCase = new AddTrainingLeagueUseCase(repository);
-    }
+    @Mock
+    TrainingLeagueRepository trainingLeagueRepository;
 
-    void addTrainingLeagueUseCaseTest() {
-        TrainingLeague trainingLeague = new TrainingLeague("1", "Liga de entrenamiento QA",
-                Date.valueOf("1970-01-01T00:00:01.000+00:00"));
+    @Test
+    void addTrainingLeague() {
+        // ARR
+        TrainingLeague trainingLeague = new TrainingLeague("1", "descripcion", LocalDate.of(2022, 10, 10));
+
         Mono<TrainingLeague> trainingLeagueMono = Mono.just(trainingLeague);
+        when(trainingLeagueRepository.save(trainingLeague)).thenReturn(trainingLeagueMono);
 
-        when(repository.save(Mockito.any(TrainingLeague.class))).thenReturn(trainingLeagueMono);
-
+        // ACT
         StepVerifier.create(addTrainingLeagueUseCase.addTrainingLeague(trainingLeague))
-                .expectNextMatches(idTrainingLeague -> idTrainingLeague.getId().equals("1"))
+                .expectNextMatches(trainingLeague1 -> trainingLeague1.getId().equals("1"))// ASSERT
                 .expectComplete()
                 .verify();
     }
