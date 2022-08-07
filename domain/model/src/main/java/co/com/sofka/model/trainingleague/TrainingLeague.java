@@ -1,5 +1,6 @@
 package co.com.sofka.model.trainingleague;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -14,5 +15,5 @@ import lombok.NoArgsConstructor;
 public class TrainingLeague {
     private String id;
     private String description;
-    private Date dateConvocationEnd;
+    private LocalDate dateConvocationEnd;
 }
