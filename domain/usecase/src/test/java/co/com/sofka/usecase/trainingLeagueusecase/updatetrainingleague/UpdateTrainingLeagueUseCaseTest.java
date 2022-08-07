@@ -1,5 +1,4 @@
-package co.com.sofka.usecase.trainingLeagueusecase.addtrainingleague;
-
+package co.com.sofka.usecase.trainingLeagueusecase.updatetrainingleague;
 
 import co.com.sofka.model.trainingleague.TrainingLeague;
 import co.com.sofka.model.trainingleague.gateways.TrainingLeagueRepository;
@@ -13,30 +12,29 @@ import reactor.test.StepVerifier;
 
 import java.time.LocalDate;
 
+import static org.mockito.Mockito.when;
 
-            import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class AddTrainingLeagueUseCaseTest {
+class UpdateTrainingLeagueUseCaseTest {
 
     @InjectMocks
-    AddTrainingLeagueUseCase addTrainingLeagueUseCase;
+    UpdateTrainingLeagueUseCase updateTrainingLeagueUseCase;
 
     @Mock
     TrainingLeagueRepository trainingLeagueRepository;
 
     @Test
-    void addTrainingLeague() {
-        // ARR
-        TrainingLeague trainingLeague = new TrainingLeague("1", "descripcion", LocalDate.of(2022, 10, 10));
+    void updateTrainingLeague() {
+        TrainingLeague trainingLeague = new TrainingLeague("1", "drescripcion1", LocalDate.of(2022, 10, 10));
 
         Mono<TrainingLeague> trainingLeagueMono = Mono.just(trainingLeague);
-        when(trainingLeagueRepository.save(trainingLeague)).thenReturn(trainingLeagueMono);
+        when(updateTrainingLeagueUseCase.updateTrainingLeague("1", trainingLeague)).thenReturn(trainingLeagueMono);
 
-        // ACT
-        StepVerifier.create(addTrainingLeagueUseCase.addTrainingLeague(trainingLeague))
-                .expectNextMatches(trainingLeague1 -> trainingLeague1.getId().equals("1"))// ASSERT
+        StepVerifier.create(updateTrainingLeagueUseCase.updateTrainingLeague("1", trainingLeague))
+                .expectNextMatches(trainingLeague1 -> trainingLeague1.getId().equals("1"))
                 .expectComplete()
                 .verify();
+
     }
 }
