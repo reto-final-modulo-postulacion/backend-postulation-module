@@ -1,4 +1,4 @@
-package co.com.sofka.usecase.postulantusecase;
+package co.com.sofka.usecase.postulantusecase.createpostulant;
 
 import co.com.sofka.model.postulant.Postulant;
 import co.com.sofka.model.postulant.gateways.PostulantRepository;

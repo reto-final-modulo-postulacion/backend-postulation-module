@@ -1,8 +1,9 @@
-package co.com.sofka.usecase.postulantusecase;
+package co.com.sofka.usecase.postulantusecase.createpostulant;
 
 import co.com.sofka.model.postulant.DocumentUser;
 import co.com.sofka.model.postulant.Postulant;
 import co.com.sofka.model.postulant.gateways.PostulantRepository;
+import co.com.sofka.usecase.postulantusecase.createpostulant.CreatePostulantUseCase;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
