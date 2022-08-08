@@ -4,6 +4,8 @@ package co.com.sofka.api.challenge;
 
 import co.com.sofka.model.challenge.Challenge;
 import co.com.sofka.usecase.challenge.createchallenge.CreateChallengeUseCase;
+import co.com.sofka.usecase.challenge.deletechallenge.DeleteChallengeUseCase;
+import co.com.sofka.usecase.challenge.findallchallenge.FindAllChallengeUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -17,6 +19,8 @@ import reactor.core.publisher.Mono;
 public class HandlerChallenge {
 
     private final CreateChallengeUseCase createChallengeUseCase;
+    private final DeleteChallengeUseCase deleteChallengeUseCase;
+    private final FindAllChallengeUseCase findAllChallengeUseCase;
 
     Mono<ServerResponse> listenPostCreateChallengeUseCase(ServerRequest serverRequest){
         return serverRequest.bodyToMono(Challenge.class)
@@ -26,4 +30,18 @@ public class HandlerChallenge {
                 .body(createChallengeUseCase.createChallenge(challenge), Challenge.class));
     }
 
+    Mono<ServerResponse> listenDeleteChallengeUseCase(ServerRequest serverRequest){
+        var id = serverRequest.pathVariable("id");
+        return ServerResponse
+                .ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(deleteChallengeUseCase.deleteChallenge(id), Challenge.class);
+    }
+
+    Mono<ServerResponse> listenGetFindAllChallenge(ServerRequest serverRequest){
+        return ServerResponse
+                .ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(findAllChallengeUseCase.findAllChallenge(), Challenge.class);
+    }
 }
