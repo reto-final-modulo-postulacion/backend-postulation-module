@@ -2,6 +2,7 @@ package co.com.sofka.api.postulant;
 
 
 import co.com.sofka.model.postulant.Postulant;
+import co.com.sofka.usecase.postulantusecase.addchallenge.AddChallengeUseCase;
 import co.com.sofka.usecase.postulantusecase.createpostulant.CreatePostulantUseCase;
 import co.com.sofka.usecase.postulantusecase.deletepostulant.DeletePostulantUseCase;
 import co.com.sofka.usecase.postulantusecase.findallpostulant.FindAllPostulantUseCase;
@@ -25,6 +26,7 @@ public class HandlerPostulant {
     private final FindPostulantUseCase findPostulantUseCase;
     private final UpdatePostulantUseCase updatePostulantUseCase;
     private final RegisterToTrainingUseCase registerToTrainingUseCase;
+    private final AddChallengeUseCase addChallengeUseCase;
 
     public Mono<ServerResponse> listenPostCreatePostulantUseCase(ServerRequest serverRequest){
         return serverRequest.bodyToMono(Postulant.class)
@@ -73,5 +75,14 @@ public class HandlerPostulant {
                 .ok()
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(registerToTrainingUseCase.registerToTraining(idTraining, idPostulant), Postulant.class);
+    }
+
+    public Mono<ServerResponse> listenPutAddChallengeUseCase(ServerRequest serverRequest){
+        var idChallenge = serverRequest.pathVariable("idChallenge");
+        var idPostulant = serverRequest.pathVariable("idPostulant");
+        return ServerResponse
+                .ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(addChallengeUseCase.addChallenge(idPostulant, idChallenge), Postulant.class);
     }
 }

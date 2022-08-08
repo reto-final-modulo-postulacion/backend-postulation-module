@@ -18,6 +18,5 @@ public class RouterRestChallenge {
                 .andRoute(GET("/api/challenge"), handler::listenGetFindAllChallengeUseCase)
                 .andRoute(GET("/api/challenge/{id}"), handler::listenGetFindChallengeUseCase)
                 .andRoute(PUT("/api/challenge/{id}"), handler::listenPutUpdateChallengeUseCase);
-                /*.andRoute(PUT("/api/postulant/{idTraining}/{idPostulant}"), handler::listenPutRegisterToTraining);*/
     }
 }
