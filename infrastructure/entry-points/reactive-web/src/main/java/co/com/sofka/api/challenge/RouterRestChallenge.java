@@ -15,9 +15,9 @@ public class RouterRestChallenge {
     public RouterFunction<ServerResponse> routerFunctionChallenge(HandlerChallenge handler) {
         return route(POST("/api/challenge"), handler::listenPostCreateChallengeUseCase)
                 .andRoute(DELETE("/api/challenge/{id}"), handler::listenDeleteChallengeUseCase)
-                .andRoute(GET("/api/challenge"), handler::listenGetFindAllChallenge);
-                /*.andRoute(GET("/api/postulant/{id}"), handler::listenGetFindPostulant)
-                .andRoute(PUT("/api/postulant/{id}"), handler::listenPutUpdatePostulant)
-                .andRoute(PUT("/api/postulant/{idTraining}/{idPostulant}"), handler::listenPutRegisterToTraining);*/
+                .andRoute(GET("/api/challenge"), handler::listenGetFindAllChallengeUseCase)
+                .andRoute(GET("/api/challenge/{id}"), handler::listenGetFindChallengeUseCase)
+                .andRoute(PUT("/api/challenge/{id}"), handler::listenPutUpdateChallengeUseCase);
+                /*.andRoute(PUT("/api/postulant/{idTraining}/{idPostulant}"), handler::listenPutRegisterToTraining);*/
     }
 }
