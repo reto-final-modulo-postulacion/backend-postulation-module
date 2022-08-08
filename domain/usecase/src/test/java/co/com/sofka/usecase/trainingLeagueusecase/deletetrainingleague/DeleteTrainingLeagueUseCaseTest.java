@@ -13,37 +13,30 @@ import reactor.test.StepVerifier;
 
 import java.time.LocalDate;
 
+
+
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class DeleteTrainingLeagueUseCaseTest {
+class DeleteTrainingLeagueUseCaseTest {
+
 
     @InjectMocks
     DeleteTrainingLeagueUseCase deleteTrainingLeagueUseCase;
 
-    @InjectMocks
-    AddTrainingLeagueUseCase addTrainingLeagueUseCase;
-
     @Mock
-    TrainingLeagueRepository repository;
-
+    TrainingLeagueRepository trainingLeagueRepository;
 
     @Test
-    void deleteTrainingLeague(){
-        // ARR
+    void deletetrainingleague() {
         TrainingLeague trainingLeague = new TrainingLeague("1", "descripcion", LocalDate.of(2022, 10, 10));
 
-        Mono<TrainingLeague> trainingLeagueMono = Mono.just(trainingLeague);
-        when(repository.save(trainingLeague)).thenReturn(trainingLeagueMono);
-
-        Mono<Void> then = Mono.empty();
-        when(repository.deleteById("1")).thenReturn(then );
+        Mono<Void> trainingLeagueMono = Mono.empty();
+        when(trainingLeagueRepository.deleteById("1")).thenReturn(trainingLeagueMono);
 
         // ACT
         StepVerifier.create(deleteTrainingLeagueUseCase.deletetrainingleague("1"))
-                .expectNextMatches((a) -> a.equals(Mono.empty()))
-                .verifyComplete();
+                .expectNextMatches(unused -> false)
+                .expectNext();
     }
-
-
 }

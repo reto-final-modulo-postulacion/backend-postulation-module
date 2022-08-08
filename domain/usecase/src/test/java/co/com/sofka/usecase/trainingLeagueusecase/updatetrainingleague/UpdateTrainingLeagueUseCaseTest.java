@@ -2,7 +2,7 @@ package co.com.sofka.usecase.trainingLeagueusecase.updatetrainingleague;
 
 import co.com.sofka.model.trainingleague.TrainingLeague;
 import co.com.sofka.model.trainingleague.gateways.TrainingLeagueRepository;
-import lombok.RequiredArgsConstructor;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -22,23 +22,19 @@ class UpdateTrainingLeagueUseCaseTest {
     UpdateTrainingLeagueUseCase updateTrainingLeagueUseCase;
 
     @Mock
-    TrainingLeagueRepository repository;
+    TrainingLeagueRepository trainingLeagueRepository;
 
     @Test
-    void updateTrainingLeague(){
+    void updateTrainingLeague() {
+        TrainingLeague trainingLeague = new TrainingLeague("1", "drescripcion1", LocalDate.of(2022, 10, 10));
 
-        TrainingLeague trainingLeague=
-                new TrainingLeague("1", "descripcion2", LocalDate.of(2022, 11, 11));
+        Mono<TrainingLeague> trainingLeagueMono = Mono.just(trainingLeague);
+        when(trainingLeagueRepository.updateTrainingLeague("1", trainingLeague)).thenReturn(trainingLeagueMono);
 
-        TrainingLeague newTrainingLeague=
-                new TrainingLeague("1", "QA", LocalDate.of(2022, 10, 17));
+        StepVerifier.create(updateTrainingLeagueUseCase.updateTrainingLeague("1", trainingLeague))
+                .expectNextMatches(trainingLeague1 -> trainingLeague1.getId().equals("1"))
+                .expectComplete()
+                .verify();
 
-        Mono<TrainingLeague> trainingLeagueMono = Mono.just(newTrainingLeague);
-
-        when(updateTrainingLeagueUseCase.updateTrainingLeague(trainingLeague.getId(), newTrainingLeague)).thenReturn(trainingLeagueMono);
-
-        StepVerifier.create(updateTrainingLeagueUseCase.updateTrainingLeague("1", newTrainingLeague))
-                .expectNextMatches(trainingLeagueNew -> trainingLeagueNew.getDescription().equals("QA"))
-                .verifyComplete();
     }
 }

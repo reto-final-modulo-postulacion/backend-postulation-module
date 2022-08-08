@@ -1,23 +1,21 @@
-package co.com.sofka.model.trainingleague;
-
-import java.time.LocalDate;
-import java.util.List;
-
+package co.com.sofka.mongo.challenge;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 @Data
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class TrainingLeague {
+public class ChallengeDocument {
+    @Id
     private String id;
     private String name;
     private String description;
-    private List<String> expecialities;
-    private LocalDate dateConvocationEnd;
-    private String img;
+    private String urlDocument;
 }
