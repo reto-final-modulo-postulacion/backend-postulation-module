@@ -24,7 +24,7 @@ class FindPostulantUseCaseTest {
 
     @Test
     void findPostulant() {
-        Postulant postulant = new Postulant("1", new DocumentUser(), "1990-02-10", "Peruano", "5555555");
+        Postulant postulant = new Postulant("1", new DocumentUser(), "1990-02-10", "Peruano", "5555555", "1");
 
         Mono<Postulant> postulantMono = Mono.just(postulant);
         when(postulantRepository.findById("1")).thenReturn(postulantMono);

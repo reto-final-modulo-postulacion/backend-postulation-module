@@ -37,7 +37,8 @@ implements PostulantRepository {
                         postulant.getUrlCV(),
                         postulant.getLinkedin(),
                         postulant.getSessionOn(),
-                        postulant.getChallenge()
+                        postulant.getChallenge(),
+                        postulant.getIdTraining()
                 )).flatMap(postulantDocument -> Mono.just(postulant));
         }
 }

@@ -24,7 +24,7 @@ class DeletePostulantUseCaseTest {
 
     @Test
     void deletePostulant() {
-        Postulant postulant = new Postulant("1", new DocumentUser(), "1990-02-10", "Colombiano", "555555");
+        Postulant postulant = new Postulant("1", new DocumentUser(), "1990-02-10", "Colombiano", "555555", "1");
 
         Mono<Void> voidMono = Mono.empty();
         when(postulantRepository.deleteById("1")).thenReturn(voidMono);

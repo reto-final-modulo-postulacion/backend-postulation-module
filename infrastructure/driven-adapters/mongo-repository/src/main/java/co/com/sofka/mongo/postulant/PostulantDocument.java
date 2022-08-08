@@ -38,4 +38,5 @@ public class PostulantDocument {
     private String linkedin;
     private Boolean sessionOn;
     private ChallengePostulant challenge;
+    private String idTraining;
 }

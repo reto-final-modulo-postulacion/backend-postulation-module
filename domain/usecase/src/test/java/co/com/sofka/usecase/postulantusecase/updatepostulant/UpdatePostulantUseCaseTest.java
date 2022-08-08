@@ -24,10 +24,10 @@ class UpdatePostulantUseCaseTest {
 
     @Test
     void updatePostulant() {
-        Postulant postulant = new Postulant("1", new DocumentUser(), "1990-02-10", "Peruano", "5555555");
+        Postulant postulant = new Postulant("1", new DocumentUser(), "1990-02-10", "Peruano", "5555555", "1");
 
         Mono<Postulant> postulantMono = Mono.just(postulant);
-        when(updatePostulantUseCase.updatePostulant("1", postulant)).thenReturn(postulantMono);
+        when(postulantRepository.update("1", postulant)).thenReturn(postulantMono);
 
         StepVerifier.create(updatePostulantUseCase.updatePostulant("1", postulant))
                 .expectNextMatches(postulant1 -> postulant1.getId().equals("1"))

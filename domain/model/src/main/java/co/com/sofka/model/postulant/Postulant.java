@@ -33,12 +33,13 @@ public class Postulant {
     private String linkedin;
     private Boolean sessionOn;
     private ChallengePostulant challenge;
+    private String idTraining;
 
     public Postulant(String id, DocumentUser documentUser, String dateOfBirth, String nationality, String urlPhoto,
                      String phone, String workExperience, String currentOccupation, String educationalLevel,
                      String country, String department, String municipality, String address, String englishLevel,
                      Boolean isStudying, String aboutYou, String urlCV, String linkedin, Boolean sessionOn,
-                     ChallengePostulant challenge) {
+                     ChallengePostulant challenge, String idTraining) {
         this.id = id;
         this.documentUser = documentUser;
         this.dateOfBirth = LocalDate.parse(dateOfBirth);
@@ -59,13 +60,15 @@ public class Postulant {
         this.linkedin = linkedin;
         this.sessionOn = sessionOn;
         this.challenge = challenge;
+        this.idTraining = idTraining;
     }
 
-    public Postulant(String id, DocumentUser documentUser, String dateOfBirth, String nationality, String phone) {
+    public Postulant(String id, DocumentUser documentUser, String dateOfBirth, String nationality, String phone, String idTraining) {
         this.id = id;
         this.documentUser = documentUser;
         this.dateOfBirth = LocalDate.parse(dateOfBirth);
         this.nationality = nationality;
         this.phone = phone;
+        this.idTraining = idTraining;
     }
 }

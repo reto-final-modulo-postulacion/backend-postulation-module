@@ -1,4 +1,4 @@
-package co.com.sofka.api.postulant;
+package co.com.sofka.api.challenge;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,14 +10,14 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 
 
 @Configuration
-public class RouterRestPostulant {
+public class RouterRestChallenge {
     @Bean
-    public RouterFunction<ServerResponse> routerFunctionPostulant(HandlerPostulant handler) {
-        return route(POST("/api/postulant"), handler::listenPostCreatePostulantUseCase)
-                .andRoute(DELETE("/api/postulant/{id}"), handler::listenDeletePostulant)
+    public RouterFunction<ServerResponse> routerFunctionPostulant(HandlerChallenge handler) {
+        return route(POST("/api/postulant"), handler::listenPostCreateChallenge);
+                /*.andRoute(DELETE("/api/postulant/{id}"), handler::listenDeletePostulant)
                 .andRoute(GET("/api/postulant"), handler::listenGetFindAllPostulant)
                 .andRoute(GET("/api/postulant/{id}"), handler::listenGetFindPostulant)
                 .andRoute(PUT("/api/postulant/{id}"), handler::listenPutUpdatePostulant)
-                .andRoute(PUT("/api/postulant/{idTraining}/{idPostulant}"), handler::listenPutRegisterToTraining);
+                .andRoute(PUT("/api/postulant/{idTraining}/{idPostulant}"), handler::listenPutRegisterToTraining);*/
     }
 }
