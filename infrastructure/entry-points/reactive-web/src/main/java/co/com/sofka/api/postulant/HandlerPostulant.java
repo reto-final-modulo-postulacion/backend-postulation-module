@@ -6,6 +6,7 @@ import co.com.sofka.usecase.postulantusecase.createpostulant.CreatePostulantUseC
 import co.com.sofka.usecase.postulantusecase.deletepostulant.DeletePostulantUseCase;
 import co.com.sofka.usecase.postulantusecase.findallpostulant.FindAllPostulantUseCase;
 import co.com.sofka.usecase.postulantusecase.findpostulant.FindPostulantUseCase;
+import co.com.sofka.usecase.postulantusecase.updatepostulant.UpdatePostulantUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -21,6 +22,7 @@ public class HandlerPostulant {
     private final DeletePostulantUseCase deletePostulantUseCase;
     private final FindAllPostulantUseCase findAllPostulantUseCase;
     private final FindPostulantUseCase findPostulantUseCase;
+    private final UpdatePostulantUseCase updatePostulantUseCase;
 
     public Mono<ServerResponse> listenPostCreatePostulantUseCase(ServerRequest serverRequest){
         return serverRequest.bodyToMono(Postulant.class)
@@ -51,5 +53,14 @@ public class HandlerPostulant {
                 .ok()
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(findPostulantUseCase.findPostulant(id), Postulant.class);
+    }
+
+    public Mono<ServerResponse> listenPutUpdatePostulant(ServerRequest serverRequest){
+        var id = serverRequest.pathVariable("id");
+        return serverRequest.bodyToMono(Postulant.class)
+                .flatMap(postulant -> ServerResponse
+                        .ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(updatePostulantUseCase.updatePostulant(id, postulant), Postulant.class));
     }
 }
