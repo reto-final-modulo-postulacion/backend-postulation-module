@@ -12,8 +12,8 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 @Configuration
 public class RouterRestChallenge {
     @Bean
-    public RouterFunction<ServerResponse> routerFunctionPostulant(HandlerChallenge handler) {
-        return route(POST("/api/postulant"), handler::listenPostCreateChallenge);
+    public RouterFunction<ServerResponse> routerFunctionChallenge(HandlerChallenge handler) {
+        return route(POST("/api/challenge"), handler::listenPostCreateChallengeUseCase);
                 /*.andRoute(DELETE("/api/postulant/{id}"), handler::listenDeletePostulant)
                 .andRoute(GET("/api/postulant"), handler::listenGetFindAllPostulant)
                 .andRoute(GET("/api/postulant/{id}"), handler::listenGetFindPostulant)

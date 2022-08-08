@@ -7,12 +7,17 @@ import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;
 
-import java.util.function.Function;
-
 @Repository
 public class ChallengeMongoRepositoryAdapter extends AdapterOperations<Challenge, ChallengeDocument, String, ChallengeMongoDBRepository>
-implements ChallengeRepository {
-    public ChallengeMongoRepositoryAdapter(ChallengeMongoDBRepository repository, ObjectMapper mapper, Function<ChallengeDocument, Challenge> toEntityFn) {
+implements ChallengeRepository
+{
+
+    public ChallengeMongoRepositoryAdapter(ChallengeMongoDBRepository repository, ObjectMapper mapper) {
+        /**
+         *  Could be use mapper.mapBuilder if your domain model implement builder pattern
+         *  super(repository, mapper, d -> mapper.mapBuilder(d,ObjectModel.ObjectModelBuilder.class).build());
+         *  Or using mapper.map with the class of the object model
+         */
         super(repository, mapper, d -> mapper.map(d, Challenge.class));
     }
 

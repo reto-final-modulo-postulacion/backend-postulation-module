@@ -1,4 +1,4 @@
-package co.com.sofka.usecase.challengeusecase.createchallenge;
+package co.com.sofka.usecase.challenge.createchallenge;
 
 import co.com.sofka.model.challenge.Challenge;
 import co.com.sofka.model.challenge.gateways.ChallengeRepository;
