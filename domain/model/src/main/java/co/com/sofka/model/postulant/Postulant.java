@@ -23,7 +23,7 @@ public class Postulant {
     private String currentOccupation;
     private String educationalLevel;
     private String country;
-    private String departament;
+    private String department;
     private String municipality;
     private String address;
     private String englishLevel;
@@ -33,4 +33,39 @@ public class Postulant {
     private String linkedin;
     private Boolean sessionOn;
     private ChallengePostulant challenge;
+
+    public Postulant(String id, DocumentUser documentUser, String dateOfBirth, String nationality, String urlPhoto,
+                     String phone, String workExperience, String currentOccupation, String educationalLevel,
+                     String country, String department, String municipality, String address, String englishLevel,
+                     Boolean isStudying, String aboutYou, String urlCV, String linkedin, Boolean sessionOn,
+                     ChallengePostulant challenge) {
+        this.id = id;
+        this.documentUser = documentUser;
+        this.dateOfBirth = LocalDate.parse(dateOfBirth);
+        this.nationality = nationality;
+        this.urlPhoto = urlPhoto;
+        this.phone = phone;
+        this.workExperience = workExperience;
+        this.currentOccupation = currentOccupation;
+        this.educationalLevel = educationalLevel;
+        this.country = country;
+        this.department = department;
+        this.municipality = municipality;
+        this.address = address;
+        this.englishLevel = englishLevel;
+        this.isStudying = isStudying;
+        this.aboutYou = aboutYou;
+        this.urlCV = urlCV;
+        this.linkedin = linkedin;
+        this.sessionOn = sessionOn;
+        this.challenge = challenge;
+    }
+
+    public Postulant(String id, DocumentUser documentUser, String dateOfBirth, String nationality, String phone) {
+        this.id = id;
+        this.documentUser = documentUser;
+        this.dateOfBirth = LocalDate.parse(dateOfBirth);
+        this.nationality = nationality;
+        this.phone = phone;
+    }
 }

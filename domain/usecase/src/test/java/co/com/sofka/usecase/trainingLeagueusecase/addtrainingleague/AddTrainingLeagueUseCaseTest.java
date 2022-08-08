@@ -14,7 +14,7 @@ import reactor.test.StepVerifier;
 import java.time.LocalDate;
 
 
-            import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class AddTrainingLeagueUseCaseTest {

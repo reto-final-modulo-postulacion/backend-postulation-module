@@ -28,7 +28,7 @@ implements PostulantRepository {
                         postulant.getCurrentOccupation(),
                         postulant.getEducationalLevel(),
                         postulant.getCountry(),
-                        postulant.getDepartament(),
+                        postulant.getDepartment(),
                         postulant.getMunicipality(),
                         postulant.getAddress(),
                         postulant.getEnglishLevel(),

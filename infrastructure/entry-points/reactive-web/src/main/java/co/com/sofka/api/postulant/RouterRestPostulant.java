@@ -5,13 +5,16 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
+import static org.springframework.web.reactive.function.server.RequestPredicates.POST;
+import static org.springframework.web.reactive.function.server.RouterFunctions.route;
+
 
 @Configuration
-public class RouterRest {
+public class RouterRestPostulant {
     @Bean
-    public RouterFunction<ServerResponse> routerFunction(HandlerPostulant handler) {
-        return null;/*route(POST("/api/trainingleague"), handler::listenPostAddTrainingLeagueUseCase)
-                .andRoute(GET("/api/trainingleague"), handler::listenFindAllTrainingLeagueUseCase)
+    public RouterFunction<ServerResponse> routerFunctionPostulant(HandlerPostulant handler) {
+        return route(POST("/api/postulant"), handler::listenPostCreatePostulantUseCase);
+                /*.andRoute(GET("/api/trainingleague"), handler::listenFindAllTrainingLeagueUseCase)
                 .andRoute(GET("/api/trainingleague/{id}"), handler::listenFindTrainingLeagueUseCase)
                 .andRoute(PUT("/api/trainingleague/{id}"), handler::listenUpdateTrainingLeagueUseCase)
                 .andRoute(DELETE("/api/trainingleague/{id}"), handler::listenDeleteTrainingLeagueUseCase);*/
