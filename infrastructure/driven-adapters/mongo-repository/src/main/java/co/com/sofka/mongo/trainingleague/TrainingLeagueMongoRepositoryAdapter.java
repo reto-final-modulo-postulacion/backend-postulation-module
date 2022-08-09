@@ -3,7 +3,7 @@ package co.com.sofka.mongo.trainingleague;
 import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.stereotype.Repository;
 
-import co.com.sofka.model.trainingleague.TrainingLeagueDocument;
+
 import co.com.sofka.model.trainingleague.TrainingLeague;
 import co.com.sofka.model.trainingleague.gateways.TrainingLeagueRepository;
 import co.com.sofka.mongo.helper.AdapterOperations;

@@ -11,6 +11,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
+import java.util.Objects;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
@@ -33,7 +35,7 @@ class RegisterToTrainingUseCaseTest {
                 "1");
 
         Mono<Postulant> postulantMono = Mono.just(postulant);
-        when(registerToTrainingUseCase.registerToTraining("1", "1")).thenReturn(postulantMono);
+        when(Objects.requireNonNull(registerToTrainingUseCase.registerToTraining("1", "1"))).thenReturn(postulantMono);
 
         StepVerifier.create(postulantRepository.update("1", postulant))
                 .expectNextMatches(postulant1 -> postulant1.getId().equals("1") && postulant1.getIdTraining().equals("1"))
