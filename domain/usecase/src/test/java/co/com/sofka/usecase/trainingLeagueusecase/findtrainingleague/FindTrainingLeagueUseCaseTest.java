@@ -29,9 +29,8 @@ class FindTrainingLeagueUseCaseTest {
         when(trainingLeagueRepository.findById("1")).thenReturn(trainingLeagueMono);
 
         StepVerifier.create(findTrainingLeagueUseCase.findTrainingLeague("1"))
-                .expectNext()
+                .expectNextMatches(trainingLeague1 -> trainingLeague1.getId().equals("1"))
                 .expectComplete()
-                .verifyThenAssertThat()
-                .tookLessThan(Duration.ZERO);
+                .verify();
     }
 }
