@@ -24,6 +24,7 @@ public class PostulantDocument {
     private String nationality;
     private String urlPhoto;
     private String phone;
+    private String email;
     private String workExperience;
     private String currentOccupation;
     private String educationalLevel;

@@ -19,6 +19,7 @@ public class Postulant {
     private String nationality;
     private String urlPhoto;
     private String phone;
+    private String email;
     private String workExperience;
     private String currentOccupation;
     private String educationalLevel;
@@ -36,7 +37,7 @@ public class Postulant {
     private String idTraining;
 
     public Postulant(String id, DocumentUser documentUser, String dateOfBirth, String nationality, String urlPhoto,
-                     String phone, String workExperience, String currentOccupation, String educationalLevel,
+                     String phone, String email, String workExperience, String currentOccupation, String educationalLevel,
                      String country, String department, String municipality, String address, String englishLevel,
                      Boolean isStudying, String aboutYou, String urlCV, String linkedin, Boolean sessionOn,
                      ChallengePostulant challenge, String idTraining) {
@@ -46,6 +47,7 @@ public class Postulant {
         this.nationality = nationality;
         this.urlPhoto = urlPhoto;
         this.phone = phone;
+        this.email = email;
         this.workExperience = workExperience;
         this.currentOccupation = currentOccupation;
         this.educationalLevel = educationalLevel;
@@ -63,12 +65,14 @@ public class Postulant {
         this.idTraining = idTraining;
     }
 
-    public Postulant(String id, DocumentUser documentUser, String dateOfBirth, String nationality, String phone, String idTraining) {
+    public Postulant(String id, DocumentUser documentUser, String dateOfBirth, String nationality, String phone,
+                     String idTraining, String email) {
         this.id = id;
         this.documentUser = documentUser;
         this.dateOfBirth = LocalDate.parse(dateOfBirth);
         this.nationality = nationality;
         this.phone = phone;
         this.idTraining = idTraining;
+        this.email = email;
     }
 }
