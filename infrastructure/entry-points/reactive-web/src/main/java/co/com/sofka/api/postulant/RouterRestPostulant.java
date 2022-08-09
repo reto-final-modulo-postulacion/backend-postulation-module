@@ -18,7 +18,9 @@ public class RouterRestPostulant {
                 .andRoute(GET("/api/postulant"), handler::listenGetFindAllPostulant)
                 .andRoute(GET("/api/postulant/{id}"), handler::listenGetFindPostulant)
                 .andRoute(PUT("/api/postulant/{id}"), handler::listenPutUpdatePostulant)
-                .andRoute(PUT("/api/postulant/{idTraining}/{idPostulant}"), handler::listenPutRegisterToTraining)
-                .andRoute(PUT("/api/postulant/addchallenge/{idChallenge}/{idPostulant}"), handler::listenPutAddChallengeUseCase);
+                .andRoute(PUT("/api/postulant/{idTraining}/{idPostulant}"), handler::listenPutRegisterToTrainingUseCase)
+                .andRoute(PUT("/api/postulant/addchallenge/{idChallenge}/{idPostulant}"), handler::listenPutAddChallengeUseCase)
+                .andRoute(GET("/api/postulant/calculateage/{id}"), handler::listenGetCalculateAgeUseCase)
+                .andRoute(GET("/api/postulant/issessionon/{id}"), handler::listenGetIsSessionOnUseCase);
     }
 }

@@ -28,7 +28,7 @@ public class PostulantDocument {
     private String currentOccupation;
     private String educationalLevel;
     private String country;
-    private String departament;
+    private String department;
     private String municipality;
     private String address;
     private String englishLevel;
