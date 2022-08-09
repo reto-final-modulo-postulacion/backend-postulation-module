@@ -24,11 +24,12 @@ public class PostulantDocument {
     private String nationality;
     private String urlPhoto;
     private String phone;
+    private String email;
     private String workExperience;
     private String currentOccupation;
     private String educationalLevel;
     private String country;
-    private String departament;
+    private String department;
     private String municipality;
     private String address;
     private String englishLevel;

@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
+
 @Document
 @Data
 @Builder(toBuilder = true)
@@ -18,4 +20,5 @@ public class ChallengeDocument {
     private String name;
     private String description;
     private String urlDocument;
+    private LocalDate closingDate;
 }

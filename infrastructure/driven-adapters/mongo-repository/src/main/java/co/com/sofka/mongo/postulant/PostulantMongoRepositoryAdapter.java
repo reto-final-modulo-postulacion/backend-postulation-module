@@ -24,6 +24,7 @@ implements PostulantRepository {
                         postulant.getNationality(),
                         postulant.getUrlPhoto(),
                         postulant.getPhone(),
+                        postulant.getEmail(),
                         postulant.getWorkExperience(),
                         postulant.getCurrentOccupation(),
                         postulant.getEducationalLevel(),

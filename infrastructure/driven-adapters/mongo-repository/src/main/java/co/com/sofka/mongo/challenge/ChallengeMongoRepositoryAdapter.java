@@ -27,7 +27,8 @@ implements ChallengeRepository
                 id,
                 challenge.getName(),
                 challenge.getDescription(),
-                challenge.getUrlDocument()
+                challenge.getUrlDocument(),
+                challenge.getClosingDate()
         )).flatMap(challengeDocument -> Mono.just(challenge));
     }
 }

@@ -2,10 +2,13 @@ package co.com.sofka.api.postulant;
 
 
 import co.com.sofka.model.postulant.Postulant;
+import co.com.sofka.usecase.postulantusecase.addchallenge.AddChallengeUseCase;
+import co.com.sofka.usecase.postulantusecase.calculateage.CalculateAgeUseCase;
 import co.com.sofka.usecase.postulantusecase.createpostulant.CreatePostulantUseCase;
 import co.com.sofka.usecase.postulantusecase.deletepostulant.DeletePostulantUseCase;
 import co.com.sofka.usecase.postulantusecase.findallpostulant.FindAllPostulantUseCase;
 import co.com.sofka.usecase.postulantusecase.findpostulant.FindPostulantUseCase;
+import co.com.sofka.usecase.postulantusecase.issessionon.IsSessionOnUseCase;
 import co.com.sofka.usecase.postulantusecase.registertotraining.RegisterToTrainingUseCase;
 import co.com.sofka.usecase.postulantusecase.updatepostulant.UpdatePostulantUseCase;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +28,9 @@ public class HandlerPostulant {
     private final FindPostulantUseCase findPostulantUseCase;
     private final UpdatePostulantUseCase updatePostulantUseCase;
     private final RegisterToTrainingUseCase registerToTrainingUseCase;
+    private final AddChallengeUseCase addChallengeUseCase;
+    private final CalculateAgeUseCase calculateAgeUseCase;
+    private final IsSessionOnUseCase isSessionOnUseCase;
 
     public Mono<ServerResponse> listenPostCreatePostulantUseCase(ServerRequest serverRequest){
         return serverRequest.bodyToMono(Postulant.class)
@@ -66,12 +72,37 @@ public class HandlerPostulant {
                         .body(updatePostulantUseCase.updatePostulant(id, postulant), Postulant.class));
     }
 
-    public Mono<ServerResponse> listenPutRegisterToTraining(ServerRequest serverRequest){
+    public Mono<ServerResponse> listenPutRegisterToTrainingUseCase(ServerRequest serverRequest){
         var idTraining = serverRequest.pathVariable("idTraining");
         var idPostulant = serverRequest.pathVariable("idPostulant");
         return  ServerResponse
                 .ok()
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(registerToTrainingUseCase.registerToTraining(idTraining, idPostulant), Postulant.class);
+    }
+
+    public Mono<ServerResponse> listenPutAddChallengeUseCase(ServerRequest serverRequest){
+        var idChallenge = serverRequest.pathVariable("idChallenge");
+        var idPostulant = serverRequest.pathVariable("idPostulant");
+        return ServerResponse
+                .ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(addChallengeUseCase.addChallenge(idPostulant, idChallenge), Postulant.class);
+    }
+
+    public Mono<ServerResponse> listenGetCalculateAgeUseCase(ServerRequest serverRequest){
+        var id = serverRequest.pathVariable("id");
+        return ServerResponse
+                .ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(calculateAgeUseCase.calculateAge(id), Integer.class);
+    }
+
+    public Mono<ServerResponse> listenGetIsSessionOnUseCase(ServerRequest serverRequest){
+        var id = serverRequest.pathVariable("id");
+        return ServerResponse
+                .ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(isSessionOnUseCase.isSessionOn(id), Boolean.class);
     }
 }
