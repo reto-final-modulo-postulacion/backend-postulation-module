@@ -1,6 +1,6 @@
 package co.com.sofka.model.challenge;
 
-import lombok.AllArgsConstructor;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,7 +8,6 @@ import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class ChallengePostulant {
     private String idChallenge;
     private LocalDate registrationDate;
@@ -19,5 +18,13 @@ public class ChallengePostulant {
     public ChallengePostulant(String idChallenge){
         this.idChallenge = idChallenge;
         this.registrationDate = LocalDate.now();
+    }
+
+    public ChallengePostulant(String idChallenge, String registrationDate, String initialDate, String finalDate, String language) {
+        this.idChallenge = idChallenge;
+        this.registrationDate = LocalDate.parse(registrationDate);
+        this.initialDate = LocalDate.parse(initialDate);
+        this.finalDate = LocalDate.parse(finalDate);
+        this.language = language;
     }
 }

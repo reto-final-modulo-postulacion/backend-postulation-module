@@ -2,6 +2,7 @@ package co.com.sofka;
 
 import co.com.sofka.usecase.postulantusecase.findwhostartstoday.FindWhoStartsTodayUseCase;
 import lombok.RequiredArgsConstructor;
+import org.reactivestreams.Subscriber;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -32,16 +33,17 @@ public class SentinelPostulant {
         return Mono.empty();
     }*/
 
-    @Scheduled(cron = "0 59 17 9 * ?")
-    public void verifyOnHOurEspecify(){
+    @Scheduled(cron = "0 8 18 9 * ?")
+    public Mono<Void> verifyOnHOurEspecify(){
         System.out.println("A UNA HORA ESPECIFICA");
-        var emails = findWhoStartsTodayUseCase.findWhoStartToday(LocalDate.now());
-        System.out.println(emails);
+        findWhoStartsTodayUseCase.findWhoStartToday(LocalDate.now()).switchIfEmpty(Subscriber::onComplete);
+        //System.out.println(emails);
        /* if (!emails.equals(null)){
             System.out.println(emails);
         } else {
             System.out.println("NULL!!!!!!!");
         }*/
         /*collect(Collectors.toList())*/
+        return Mono.empty();
     }
 }
