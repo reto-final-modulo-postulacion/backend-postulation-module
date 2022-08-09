@@ -8,9 +8,9 @@ import org.mockito.Mock;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
+import java.time.Duration;
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 class FindTrainingLeagueUseCaseTest {
@@ -29,7 +29,7 @@ class FindTrainingLeagueUseCaseTest {
         when(trainingLeagueRepository.findById("1")).thenReturn(trainingLeagueMono);
 
         StepVerifier.create(findTrainingLeagueUseCase.findTrainingLeague("1"))
-                .expectNextMatches(trainingLeague1 -> trainingLeague1.equals(trainingLeague))
+                .expectNextMatches(trainingLeague1 -> trainingLeague1.getId().equals("1"))
                 .expectComplete()
                 .verify();
     }

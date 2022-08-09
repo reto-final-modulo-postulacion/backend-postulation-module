@@ -3,6 +3,7 @@ package co.com.sofka.mongo.trainingleague;
 import java.time.LocalDate;
 import java.util.List;
 
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

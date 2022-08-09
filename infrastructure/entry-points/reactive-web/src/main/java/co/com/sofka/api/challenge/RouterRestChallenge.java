@@ -13,11 +13,10 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 public class RouterRestChallenge {
     @Bean
     public RouterFunction<ServerResponse> routerFunctionChallenge(HandlerChallenge handler) {
-        return route(POST("/api/challenge"), handler::listenPostCreateChallengeUseCase);
-                /*.andRoute(DELETE("/api/postulant/{id}"), handler::listenDeletePostulant)
-                .andRoute(GET("/api/postulant"), handler::listenGetFindAllPostulant)
-                .andRoute(GET("/api/postulant/{id}"), handler::listenGetFindPostulant)
-                .andRoute(PUT("/api/postulant/{id}"), handler::listenPutUpdatePostulant)
-                .andRoute(PUT("/api/postulant/{idTraining}/{idPostulant}"), handler::listenPutRegisterToTraining);*/
+        return route(POST("/api/challenge"), handler::listenPostCreateChallengeUseCase)
+                .andRoute(DELETE("/api/challenge/{id}"), handler::listenDeleteChallengeUseCase)
+                .andRoute(GET("/api/challenge"), handler::listenGetFindAllChallengeUseCase)
+                .andRoute(GET("/api/challenge/{id}"), handler::listenGetFindChallengeUseCase)
+                .andRoute(PUT("/api/challenge/{id}"), handler::listenPutUpdateChallengeUseCase);
     }
 }

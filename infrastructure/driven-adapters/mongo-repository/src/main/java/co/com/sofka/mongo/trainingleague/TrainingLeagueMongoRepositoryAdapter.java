@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import co.com.sofka.mongo.trainingleague.TrainingLeagueDocument;
 import co.com.sofka.mongo.trainingleague.TrainingLeagueMongoDBRepository;
 
+
 import co.com.sofka.model.trainingleague.TrainingLeague;
 import co.com.sofka.model.trainingleague.gateways.TrainingLeagueRepository;
 import co.com.sofka.mongo.helper.AdapterOperations;
