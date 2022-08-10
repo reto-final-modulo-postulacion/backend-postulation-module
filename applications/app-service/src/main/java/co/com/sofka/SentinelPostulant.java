@@ -7,6 +7,8 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
+
+import javax.mail.MailSessionDefinition;
 import java.time.LocalDate;
 
 
@@ -18,7 +20,7 @@ public class SentinelPostulant {
     private final long MINUTO = SEGUNDO * 60;
     private final long HORA = MINUTO * 60;
     private final long DIA = HORA * 24;
-    /*private JavaMailSender mailSender;*/
+    private MailSessionDefinition sessionDefinition;
     private final FindWhoStartsTodayUseCase findWhoStartsTodayUseCase;
 
     /*@Scheduled(fixedDelay = SEGUNDO)
