@@ -34,9 +34,11 @@ public class SentinelPostulant {
     }*/
 
     @Scheduled(cron = "0 8 18 9 * ?")
-    public Mono<Void> verifyOnHOurEspecify(){
+    public Mono<Void> verifyOnHourEspecify(){
         System.out.println("A UNA HORA ESPECIFICA");
         findWhoStartsTodayUseCase.findWhoStartToday(LocalDate.now()).switchIfEmpty(Subscriber::onComplete);
+
+
         //System.out.println(emails);
        /* if (!emails.equals(null)){
             System.out.println(emails);
