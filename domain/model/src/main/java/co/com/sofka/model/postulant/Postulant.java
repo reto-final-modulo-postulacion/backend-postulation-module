@@ -14,12 +14,14 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Postulant {
     private String id;
+    private FullName fullName;
     private DocumentUser documentUser;
     private LocalDate dateOfBirth;
     private String nationality;
     private String urlPhoto;
     private String phone;
     private String email;
+    private String companyName;
     private String workExperience;
     private String currentOccupation;
     private String educationalLevel;
@@ -37,10 +39,10 @@ public class Postulant {
     private String idTraining;
 
     public Postulant(String id, DocumentUser documentUser, String dateOfBirth, String nationality, String urlPhoto,
-                     String phone, String email, String workExperience, String currentOccupation, String educationalLevel,
-                     String country, String department, String municipality, String address, String englishLevel,
-                     Boolean isStudying, String aboutYou, String urlCV, String linkedin, Boolean sessionOn,
-                     ChallengePostulant challenge, String idTraining) {
+            String phone, String email, String workExperience, String currentOccupation, String educationalLevel,
+            String country, String department, String municipality, String address, String englishLevel,
+            Boolean isStudying, String aboutYou, String urlCV, String linkedin, Boolean sessionOn,
+            ChallengePostulant challenge, String idTraining) {
         this.id = id;
         this.documentUser = documentUser;
         this.dateOfBirth = LocalDate.parse(dateOfBirth);
@@ -66,7 +68,7 @@ public class Postulant {
     }
 
     public Postulant(String id, DocumentUser documentUser, String dateOfBirth, String nationality, String phone,
-                     String idTraining, String email) {
+            String idTraining, String email) {
         this.id = id;
         this.documentUser = documentUser;
         this.dateOfBirth = LocalDate.parse(dateOfBirth);
