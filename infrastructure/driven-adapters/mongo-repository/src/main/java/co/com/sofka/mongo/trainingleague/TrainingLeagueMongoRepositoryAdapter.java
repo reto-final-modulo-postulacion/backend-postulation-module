@@ -3,6 +3,9 @@ package co.com.sofka.mongo.trainingleague;
 import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.stereotype.Repository;
 
+import co.com.sofka.mongo.trainingleague.TrainingLeagueDocument;
+import co.com.sofka.mongo.trainingleague.TrainingLeagueMongoDBRepository;
+
 
 import co.com.sofka.model.trainingleague.TrainingLeague;
 import co.com.sofka.model.trainingleague.gateways.TrainingLeagueRepository;
@@ -29,8 +32,11 @@ public class TrainingLeagueMongoRepositoryAdapter extends
                 return repository.save(
                                 new TrainingLeagueDocument(
                                                 id,
+                                                trainingLeague.getName(),
                                                 trainingLeague.getDescription(),
-                                                trainingLeague.getDateConvocationEnd()))
+                                                trainingLeague.getExpecialities(),
+                                                trainingLeague.getDateConvocationEnd(),
+                                                trainingLeague.getImg()))
                                 .flatMap(element -> Mono.just(trainingLeague));
         }
 }

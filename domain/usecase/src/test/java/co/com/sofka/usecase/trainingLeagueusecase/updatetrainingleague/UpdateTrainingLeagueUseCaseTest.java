@@ -2,6 +2,7 @@ package co.com.sofka.usecase.trainingLeagueusecase.updatetrainingleague;
 
 import co.com.sofka.model.trainingleague.TrainingLeague;
 import co.com.sofka.model.trainingleague.gateways.TrainingLeagueRepository;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -14,7 +15,6 @@ import java.time.LocalDate;
 
 import static org.mockito.Mockito.when;
 
-
 @ExtendWith(MockitoExtension.class)
 class UpdateTrainingLeagueUseCaseTest {
 
@@ -26,7 +26,7 @@ class UpdateTrainingLeagueUseCaseTest {
 
     @Test
     void updateTrainingLeague() {
-        TrainingLeague trainingLeague = new TrainingLeague("1", "drescripcion1", LocalDate.of(2022, 10, 10));
+        TrainingLeague trainingLeague = new TrainingLeague("1", "nombre", "drescripcion1", LocalDate.of(2022, 10, 10));
 
         Mono<TrainingLeague> trainingLeagueMono = Mono.just(trainingLeague);
         when(trainingLeagueRepository.updateTrainingLeague("1", trainingLeague)).thenReturn(trainingLeagueMono);

@@ -23,7 +23,7 @@ class FindTrainingLeagueUseCaseTest {
 
     @Test
     void findTrainingLeague() {
-        TrainingLeague trainingLeague = new TrainingLeague("1", "drescripcion1", LocalDate.of(2022, 10, 10));
+        TrainingLeague trainingLeague = new TrainingLeague("1", "nombre", "drescripcion1", LocalDate.of(2022, 10, 10));
 
         Mono<TrainingLeague> trainingLeagueMono = Mono.just(trainingLeague);
         when(trainingLeagueRepository.findById("1")).thenReturn(trainingLeagueMono);

@@ -8,6 +8,7 @@ import co.com.sofka.usecase.postulantusecase.createpostulant.CreatePostulantUseC
 import co.com.sofka.usecase.postulantusecase.deletepostulant.DeletePostulantUseCase;
 import co.com.sofka.usecase.postulantusecase.findallpostulant.FindAllPostulantUseCase;
 import co.com.sofka.usecase.postulantusecase.findpostulant.FindPostulantUseCase;
+import co.com.sofka.usecase.postulantusecase.findwhostartstoday.FindWhoStartsTodayUseCase;
 import co.com.sofka.usecase.postulantusecase.issessionon.IsSessionOnUseCase;
 import co.com.sofka.usecase.postulantusecase.registertotraining.RegisterToTrainingUseCase;
 import co.com.sofka.usecase.postulantusecase.updatepostulant.UpdatePostulantUseCase;
@@ -17,6 +18,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
+
+import java.time.LocalDate;
 
 @Component
 @RequiredArgsConstructor
@@ -31,6 +34,7 @@ public class HandlerPostulant {
     private final AddChallengeUseCase addChallengeUseCase;
     private final CalculateAgeUseCase calculateAgeUseCase;
     private final IsSessionOnUseCase isSessionOnUseCase;
+    private final FindWhoStartsTodayUseCase findWhoStartsTodayUseCase;
 
     public Mono<ServerResponse> listenPostCreatePostulantUseCase(ServerRequest serverRequest){
         return serverRequest.bodyToMono(Postulant.class)
@@ -104,5 +108,27 @@ public class HandlerPostulant {
                 .ok()
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(isSessionOnUseCase.isSessionOn(id), Boolean.class);
+    }
+
+    public Mono<ServerResponse> listenGetFindWhoStartsToday(ServerRequest serverRequest){
+        var date = serverRequest.pathVariable("date");
+        return ServerResponse
+                .ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(findWhoStartsTodayUseCase.findWhoStartToday(date), Postulant.class);
+
+        /*serverRequest.bodyToMono(String.class)
+                .flatMap(localDate -> ServerResponse
+                        .ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(findWhoStartsTodayUseCase.findWhoStartToday(localDate), String.class));*/
+        /*ServerResponse
+                .ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(findWhoStartsTodayUseCase.findWhoStartToday(newDate), String.class);*/
+        /*ServerResponse
+                .ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(findWhoStartsTodayUseCase.findWhoStartToday(newDate), Postulant.class);*/
     }
 }

@@ -27,7 +27,8 @@ class CreatePostulantUseCaseTest {
 
     @Test
     void createPostulant() {
-        Postulant postulant = new Postulant("1", new DocumentUser(), "1990-02-10", "Colombiano", "555555", "1");
+        Postulant postulant = new Postulant("1", new DocumentUser(), "1990-02-10", "Colombiano",
+                "555555", "1", "email@gmail.com");
 
         Mono<Postulant> postulantMono = Mono.just(postulant);
         when(postulantRepository.save(postulant)).thenReturn(postulantMono);

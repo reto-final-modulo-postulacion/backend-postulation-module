@@ -2,14 +2,15 @@ package co.com.sofka;
 
 import co.com.sofka.usecase.postulantusecase.findwhostartstoday.FindWhoStartsTodayUseCase;
 import lombok.RequiredArgsConstructor;
-import org.reactivestreams.Subscriber;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
+
+import javax.mail.MailSessionDefinition;
 import java.time.LocalDate;
-import java.util.stream.Collectors;
+
 
 @EnableScheduling
 @Component
@@ -19,6 +20,7 @@ public class SentinelPostulant {
     private final long MINUTO = SEGUNDO * 60;
     private final long HORA = MINUTO * 60;
     private final long DIA = HORA * 24;
+    private MailSessionDefinition sessionDefinition;
     private final FindWhoStartsTodayUseCase findWhoStartsTodayUseCase;
 
     /*@Scheduled(fixedDelay = SEGUNDO)
@@ -33,11 +35,16 @@ public class SentinelPostulant {
         return Mono.empty();
     }*/
 
-    @Scheduled(cron = "0 8 18 9 * ?")
-    public Mono<Void> verifyOnHourEspecify(){
-        System.out.println("A UNA HORA ESPECIFICA");
-        findWhoStartsTodayUseCase.findWhoStartToday(LocalDate.now()).switchIfEmpty(Subscriber::onComplete);
 
+    @Scheduled(cron = "0 28 0 10 * ?")
+    public Mono<Void> verifyOnHOurEspecify(){
+        System.out.println("A UNA HORA ESPECIFICA");
+        //var valor = findWhoStartsTodayUseCase.findWhoStartToday(LocalDate.now()).toStream().collect(Collectors.toList());
+        var now = LocalDate.now();
+        var x = findWhoStartsTodayUseCase.findWhoStartToday("2022-08-13").collectList().block();
+        System.out.println(x);
+
+        //valor.forEach(System.out::println);
 
         //System.out.println(emails);
        /* if (!emails.equals(null)){

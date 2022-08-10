@@ -32,7 +32,8 @@ class RegisterToTrainingUseCaseTest {
                 "1990-02-10",
                 "Peruano",
                 "5555555",
-                "1");
+                "1",
+                "email@gmail.com");
 
         Mono<Postulant> postulantMono = Mono.just(postulant);
         when(postulantRepository.update("1", postulant)).thenReturn(postulantMono);
