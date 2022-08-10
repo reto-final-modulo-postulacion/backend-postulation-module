@@ -1,15 +1,18 @@
 package co.com.sofka.mongo.postulant;
 
+import java.time.LocalDate;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import co.com.sofka.model.challenge.ChallengePostulant;
 import co.com.sofka.model.postulant.DocumentUser;
+import co.com.sofka.model.postulant.FullName;
+import co.com.sofka.model.postulant.Phone;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.time.LocalDate;
 
 @Document
 @Data
@@ -19,12 +22,14 @@ import java.time.LocalDate;
 public class PostulantDocument {
     @Id
     private String id;
+    private FullName fullName;
     private DocumentUser documentUser;
     private LocalDate dateOfBirth;
     private String nationality;
     private String urlPhoto;
-    private String phone;
+    private Phone phone;
     private String email;
+    private String companyName;
     private String workExperience;
     private String currentOccupation;
     private String educationalLevel;
@@ -33,7 +38,7 @@ public class PostulantDocument {
     private String municipality;
     private String address;
     private String englishLevel;
-    private Boolean isStudying;
+    private String isStudying;
     private String aboutYou;
     private String urlCV;
     private String linkedin;

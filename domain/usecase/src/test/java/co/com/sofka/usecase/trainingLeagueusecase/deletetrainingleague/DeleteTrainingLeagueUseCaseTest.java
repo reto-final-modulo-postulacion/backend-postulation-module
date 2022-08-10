@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
 import java.time.LocalDate;
-
+import java.util.List;
 
 
 import static org.mockito.Mockito.when;
@@ -29,7 +29,7 @@ class DeleteTrainingLeagueUseCaseTest {
 
     @Test
     void deletetrainingleague() {
-        TrainingLeague trainingLeague = new TrainingLeague("1", "descripcion", LocalDate.of(2022, 10, 10));
+        TrainingLeague trainingLeague = new TrainingLeague("1", "Desarollo", "descripcion", List.of("") ,LocalDate.of(2022, 10, 10), "img");
 
         Mono<Void> trainingLeagueMono = Mono.empty();
         when(trainingLeagueRepository.deleteById("1")).thenReturn(trainingLeagueMono);
