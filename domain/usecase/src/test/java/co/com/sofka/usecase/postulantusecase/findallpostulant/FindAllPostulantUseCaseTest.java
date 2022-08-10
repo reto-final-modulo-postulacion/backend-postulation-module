@@ -27,8 +27,10 @@ class FindAllPostulantUseCaseTest {
 
     @Test
     void findAllPostulant() {
-        Postulant postulant1 = new Postulant("1", new DocumentUser(), "1990-02-10", "Peruano", "5555555", "1");
-        Postulant postulant2 = new Postulant("2", new DocumentUser(), "1990-10-10", "Boliviano", "7777777", "2");
+        Postulant postulant1 = new Postulant("1", new DocumentUser(), "1990-02-10", "Peruano",
+                "5555555", "1", "email1@gmail.com");
+        Postulant postulant2 = new Postulant("2", new DocumentUser(), "1990-10-10", "Boliviano",
+                "7777777", "2", "email2@gmail.com");
 
         Flux<Postulant> postulantFlux = Flux.fromIterable(List.of(postulant1, postulant2));
         when(postulantRepository.findAll()).thenReturn(postulantFlux);

@@ -26,7 +26,7 @@ class UpdateTrainingLeagueUseCaseTest {
 
     @Test
     void updateTrainingLeague() {
-        TrainingLeague trainingLeague = new TrainingLeague("1", "drescripcion1", LocalDate.of(2022, 10, 10));
+        TrainingLeague trainingLeague = new TrainingLeague("1", "nombre", "drescripcion1", LocalDate.of(2022, 10, 10));
 
         Mono<TrainingLeague> trainingLeagueMono = Mono.just(trainingLeague);
         when(trainingLeagueRepository.updateTrainingLeague("1", trainingLeague)).thenReturn(trainingLeagueMono);

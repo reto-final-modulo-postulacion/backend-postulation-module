@@ -29,7 +29,7 @@ class DeleteTrainingLeagueUseCaseTest {
 
     @Test
     void deletetrainingleague() {
-        TrainingLeague trainingLeague = new TrainingLeague("1", "descripcion", LocalDate.of(2022, 10, 10));
+        TrainingLeague trainingLeague = new TrainingLeague("1", "nombre", "descripcion", LocalDate.of(2022, 10, 10));
 
         Mono<Void> trainingLeagueMono = Mono.empty();
         when(trainingLeagueRepository.deleteById("1")).thenReturn(trainingLeagueMono);

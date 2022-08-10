@@ -28,7 +28,7 @@ class AddTrainingLeagueUseCaseTest {
     @Test
     void addTrainingLeague() {
         // ARR
-        TrainingLeague trainingLeague = new TrainingLeague("1", "descripcion", LocalDate.of(2022, 10, 10));
+        TrainingLeague trainingLeague = new TrainingLeague("1", "nombre", "descripcion", LocalDate.of(2022, 10, 10));
 
         Mono<TrainingLeague> trainingLeagueMono = Mono.just(trainingLeague);
         when(trainingLeagueRepository.save(trainingLeague)).thenReturn(trainingLeagueMono);
