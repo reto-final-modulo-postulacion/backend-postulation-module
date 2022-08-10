@@ -37,7 +37,7 @@ public class PostulantDocument {
     private String municipality;
     private String address;
     private String englishLevel;
-    private Boolean isStudying;
+    private String isStudying;
     private String aboutYou;
     private String urlCV;
     private String linkedin;

@@ -30,7 +30,7 @@ public class Postulant {
     private String municipality;
     private String address;
     private String englishLevel;
-    private Boolean isStudying;
+    private String isStudying;
     private String aboutYou;
     private String urlCV;
     private String linkedin;
@@ -41,7 +41,7 @@ public class Postulant {
     public Postulant(String id, DocumentUser documentUser, String dateOfBirth, String nationality, String urlPhoto,
             String phone, String email, String workExperience, String currentOccupation, String educationalLevel,
             String country, String department, String municipality, String address, String englishLevel,
-            Boolean isStudying, String aboutYou, String urlCV, String linkedin, Boolean sessionOn,
+            String isStudying, String aboutYou, String urlCV, String linkedin, Boolean sessionOn,
             ChallengePostulant challenge, String idTraining) {
         this.id = id;
         this.documentUser = documentUser;
