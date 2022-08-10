@@ -11,6 +11,7 @@ import co.com.sofka.usecase.postulantusecase.findpostulant.FindPostulantUseCase;
 import co.com.sofka.usecase.postulantusecase.issessionon.IsSessionOnUseCase;
 import co.com.sofka.usecase.postulantusecase.registertotraining.RegisterToTrainingUseCase;
 import co.com.sofka.usecase.postulantusecase.updatepostulant.UpdatePostulantUseCase;
+import co.com.sofka.usecase.postulantusecase.updatepostulantissession.UpdatePostulantIsSessionUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -31,6 +32,8 @@ public class HandlerPostulant {
     private final AddChallengeUseCase addChallengeUseCase;
     private final CalculateAgeUseCase calculateAgeUseCase;
     private final IsSessionOnUseCase isSessionOnUseCase;
+
+    private final UpdatePostulantIsSessionUseCase updatePostulantIsSessionUseCase;
 
     public Mono<ServerResponse> listenPostCreatePostulantUseCase(ServerRequest serverRequest){
         return serverRequest.bodyToMono(Postulant.class)
@@ -61,6 +64,14 @@ public class HandlerPostulant {
                 .ok()
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(findPostulantUseCase.findPostulant(id), Postulant.class);
+    }
+
+    public Mono<ServerResponse> listenUpdatePostulantIsSessionUseCase(ServerRequest serverRequest){
+        var id = serverRequest.pathVariable("id");
+        return ServerResponse
+                .ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(updatePostulantIsSessionUseCase.updatePostulantIsSession(id), Postulant.class);
     }
 
     public Mono<ServerResponse> listenPutUpdatePostulant(ServerRequest serverRequest){

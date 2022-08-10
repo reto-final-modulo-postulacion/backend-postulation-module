@@ -28,8 +28,8 @@ class FindAllTrainingLeagueUseCaseTest {
     @Test
     void findAllTrainingLeague() {
 
-        TrainingLeague trainingLeague1 = new TrainingLeague("1", "descripcion1", LocalDate.of(2022, 10, 10));
-        TrainingLeague trainingLeague2 = new TrainingLeague("2", "descripcion2", LocalDate.of(2022, 11, 11));
+        TrainingLeague trainingLeague1 = new TrainingLeague("1", "Desarollo", "descripcion", List.of("") ,LocalDate.of(2022, 10, 10), "img");
+        TrainingLeague trainingLeague2 = new TrainingLeague("2", "Desarollo2", "descripcion", List.of("") ,LocalDate.of(2022, 10, 10), "img");
 
 
 
