@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import co.com.sofka.model.challenge.ChallengePostulant;
 import co.com.sofka.model.postulant.DocumentUser;
 import co.com.sofka.model.postulant.FullName;
+import co.com.sofka.model.postulant.Phone;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,7 +27,7 @@ public class PostulantDocument {
     private LocalDate dateOfBirth;
     private String nationality;
     private String urlPhoto;
-    private String phone;
+    private Phone phone;
     private String email;
     private String companyName;
     private String workExperience;
