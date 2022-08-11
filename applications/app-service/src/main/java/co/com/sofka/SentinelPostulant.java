@@ -14,7 +14,7 @@ import reactor.core.publisher.Mono;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Arrays;
-import java.util.UUID;
+
 
 
 @EnableScheduling
@@ -26,9 +26,9 @@ public class SentinelPostulant implements CommandLineRunner {
     private JavaMailSender emailSender;
     private final FindWhoStartsTodayUseCase findWhoStartsTodayUseCase;
 
-    @Scheduled(cron = "* * * * * ?")
+    @Scheduled(cron = "0 0 0 * * 2-6")
     public Mono<Void> verifyOnHOurEspecify() throws Exception {
-        System.out.println("A UNA HORA ESPECIFICA");
+        // System.out.println("A UNA HORA ESPECIFICA");
 
         var now = LocalDate.now();
         try{
@@ -42,11 +42,18 @@ public class SentinelPostulant implements CommandLineRunner {
                 day = "0" + day;
             }
             String today = year +"-"+ month +"-"+ day;
-            var emails = findWhoStartsTodayUseCase.findWhoStartToday("2022-08-09").collectList().block();
+            var emails = findWhoStartsTodayUseCase.findWhoStartToday(today).collectList().block();
             System.out.println(emails);
             System.out.println(today);
-
-            run("pealveco@gmail.com", "pealveco@yahoo.com");
+            String[] arrayEmails = new String[emails.size()];
+            emails.forEach(s -> {
+                try {
+                    run(s);
+                } catch (Exception e) {
+                    System.out.println("ERROR AL INTENTAR ITERAR LOS EMAILS");/*throw new RuntimeException(e);*/
+                }
+            });
+            //run(arrayEmails); /*"pealveco@gmail.com", "pealveco@yahoo.com"*/
         } catch (DateTimeParseException dateTimeParseException){
             System.out.println("ERRRORRRRRRRRRR");
         }
@@ -56,11 +63,12 @@ public class SentinelPostulant implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Arrays.stream(args).forEach(s -> {
-            var bodyMessage = "EJEMPLO DE MENSAJE POR CORREO ELECTRONICO ID = " + UUID.randomUUID().toString();
+            var bodyMessage = "Cordial Saludo, de parte de Sofka U le queremos recordar que hoy empiezan sus 3 días de realización de Reto" +
+                    " le deseamos exitos de parte de SOFKA TECHNOLOGIES";
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom("sofkaprueba111@gmail.com");
             message.setTo(s);
-            message.setSubject("Mensaje de PRUEBA. Soy PITER!!!!!!!");
+            message.setSubject("Aviso de inicio de Reto - Su Reto Inicia hoy - EXITOS");
             message.setText(bodyMessage);
             emailSender.send(message);
         });
