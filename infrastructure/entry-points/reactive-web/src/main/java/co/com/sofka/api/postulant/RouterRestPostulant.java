@@ -22,6 +22,7 @@ public class RouterRestPostulant {
                 .andRoute(PUT("/api/postulant/addchallenge/{idChallenge}/{idPostulant}"), handler::listenPutAddChallengeUseCase)
                 .andRoute(GET("/api/postulant/calculateage/{id}"), handler::listenGetCalculateAgeUseCase)
                 .andRoute(GET("/api/postulant/issessionon/{id}"), handler::listenGetIsSessionOnUseCase)
-                .andRoute(GET("/api/postulant/findwhostart/{date}"), handler::listenGetFindWhoStartsToday);
+                .andRoute(GET("/api/postulant/findwhostart/{date}"), handler::listenGetFindWhoStartsTodayUseCase)
+                .andRoute(GET("/api/postulant/{id}/{initial}/{final}"), handler::listenGetAssignDatesForChallengeUseCase);
     }
 }

@@ -43,9 +43,11 @@ public class SentinelPostulant implements CommandLineRunner {
             }
             String today = year +"-"+ month +"-"+ day;
             var emails = findWhoStartsTodayUseCase.findWhoStartToday(today).collectList().block();
+
             System.out.println(emails);
             System.out.println(today);
             String[] arrayEmails = new String[emails.size()];
+
             emails.forEach(s -> {
                 try {
                     run(s);

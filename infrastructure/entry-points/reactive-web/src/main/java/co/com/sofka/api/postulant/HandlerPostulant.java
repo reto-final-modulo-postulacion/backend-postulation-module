@@ -3,6 +3,7 @@ package co.com.sofka.api.postulant;
 
 import co.com.sofka.model.postulant.Postulant;
 import co.com.sofka.usecase.postulantusecase.addchallenge.AddChallengeUseCase;
+import co.com.sofka.usecase.postulantusecase.assigndatesforchallenge.AssignDatesForChallengeUseCase;
 import co.com.sofka.usecase.postulantusecase.calculateage.CalculateAgeUseCase;
 import co.com.sofka.usecase.postulantusecase.createpostulant.CreatePostulantUseCase;
 import co.com.sofka.usecase.postulantusecase.deletepostulant.DeletePostulantUseCase;
@@ -35,6 +36,7 @@ public class HandlerPostulant {
     private final CalculateAgeUseCase calculateAgeUseCase;
     private final IsSessionOnUseCase isSessionOnUseCase;
     private final FindWhoStartsTodayUseCase findWhoStartsTodayUseCase;
+    private final AssignDatesForChallengeUseCase assignDatesForChallengeUseCase;
 
 
     public Mono<ServerResponse> listenPostCreatePostulantUseCase(ServerRequest serverRequest){
@@ -111,11 +113,21 @@ public class HandlerPostulant {
                 .body(isSessionOnUseCase.isSessionOn(id), Boolean.class);
     }
 
-    public Mono<ServerResponse> listenGetFindWhoStartsToday(ServerRequest serverRequest){
+    public Mono<ServerResponse> listenGetFindWhoStartsTodayUseCase(ServerRequest serverRequest){
         var date = serverRequest.pathVariable("date");
         return ServerResponse
                 .ok()
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(findWhoStartsTodayUseCase.findWhoStartToday(date), Postulant.class);
+    }
+
+    public Mono<ServerResponse> listenGetAssignDatesForChallengeUseCase(ServerRequest serverRequest){
+        var id = serverRequest.pathVariable("id");
+        var initialDate = serverRequest.pathVariable("initial");
+        var finalDate = serverRequest.pathVariable("final");
+        return ServerResponse
+                .ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(assignDatesForChallengeUseCase.assignDatesForChallenge(id, initialDate, finalDate), Postulant.class);
     }
 }
