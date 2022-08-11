@@ -43,6 +43,8 @@ public class SentinelPostulant {
         var x = findWhoStartsTodayUseCase.findWhoStartToday("2022-08-13").collectList().block();
         System.out.println(x);
 
+
+
         //valor.forEach(System.out::println);
         //System.out.println(emails);
        /* if (!emails.equals(null)){
