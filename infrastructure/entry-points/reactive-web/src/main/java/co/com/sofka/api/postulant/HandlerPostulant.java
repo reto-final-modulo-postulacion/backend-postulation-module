@@ -94,7 +94,7 @@ public class HandlerPostulant {
         return ServerResponse
                 .ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(addChallengeUseCase.addChallenge(idPostulant, idChallenge), Postulant.class);
+                .body(addChallengeUseCase.addChallenge(idPostulant), Postulant.class);
     }
 
     public Mono<ServerResponse> listenGetCalculateAgeUseCase(ServerRequest serverRequest){

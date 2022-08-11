@@ -1,6 +1,7 @@
 package co.com.sofka.usecase.postulantusecase.updatepostulant;
 
 import co.com.sofka.model.postulant.DocumentUser;
+import co.com.sofka.model.postulant.Phone;
 import co.com.sofka.model.postulant.Postulant;
 import co.com.sofka.model.postulant.gateways.PostulantRepository;
 import org.junit.jupiter.api.Test;
@@ -25,7 +26,7 @@ class UpdatePostulantUseCaseTest {
     @Test
     void updatePostulant() {
         Postulant postulant = new Postulant("1", new DocumentUser(), "1990-02-10", "Peruano",
-                "5555555", "1", "email@gmail.com");
+                new Phone("57", "555555"), "1", "email@gmail.com");
 
         Mono<Postulant> postulantMono = Mono.just(postulant);
         when(postulantRepository.update("1", postulant)).thenReturn(postulantMono);

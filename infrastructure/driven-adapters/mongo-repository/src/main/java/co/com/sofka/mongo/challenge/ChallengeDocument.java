@@ -8,6 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Document
 @Data
@@ -21,4 +22,5 @@ public class ChallengeDocument {
     private String description;
     private String urlDocument;
     private LocalDate closingDate;
+    private Set<String> languages;
 }
