@@ -36,6 +36,7 @@ public class HandlerPostulant {
     private final IsSessionOnUseCase isSessionOnUseCase;
     private final FindWhoStartsTodayUseCase findWhoStartsTodayUseCase;
 
+
     public Mono<ServerResponse> listenPostCreatePostulantUseCase(ServerRequest serverRequest){
         return serverRequest.bodyToMono(Postulant.class)
                 .flatMap(postulant -> ServerResponse
@@ -116,19 +117,5 @@ public class HandlerPostulant {
                 .ok()
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(findWhoStartsTodayUseCase.findWhoStartToday(date), Postulant.class);
-
-        /*serverRequest.bodyToMono(String.class)
-                .flatMap(localDate -> ServerResponse
-                        .ok()
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .body(findWhoStartsTodayUseCase.findWhoStartToday(localDate), String.class));*/
-        /*ServerResponse
-                .ok()
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(findWhoStartsTodayUseCase.findWhoStartToday(newDate), String.class);*/
-        /*ServerResponse
-                .ok()
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(findWhoStartsTodayUseCase.findWhoStartToday(newDate), Postulant.class);*/
     }
 }
