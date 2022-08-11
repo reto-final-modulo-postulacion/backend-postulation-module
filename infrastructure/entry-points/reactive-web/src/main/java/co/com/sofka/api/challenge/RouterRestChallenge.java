@@ -17,6 +17,7 @@ public class RouterRestChallenge {
                 .andRoute(DELETE("/api/challenge/{id}"), handler::listenDeleteChallengeUseCase)
                 .andRoute(GET("/api/challenge"), handler::listenGetFindAllChallengeUseCase)
                 .andRoute(GET("/api/challenge/{id}"), handler::listenGetFindChallengeUseCase)
-                .andRoute(PUT("/api/challenge/{id}"), handler::listenPutUpdateChallengeUseCase);
+                .andRoute(PUT("/api/challenge/{id}"), handler::listenPutUpdateChallengeUseCase)
+                .andRoute(GET("/api/chooserandom"), handler::listenGetChooseChallengeRandomUseCase);
     }
 }

@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -15,4 +16,5 @@ public class Challenge {
     private String description;
     private String urlDocument;
     private LocalDate closingDate;
+    private Set<String> languages;
 }

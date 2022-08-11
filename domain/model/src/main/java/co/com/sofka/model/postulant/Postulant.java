@@ -77,4 +77,8 @@ public class Postulant {
         this.idTraining = idTraining;
         this.email = email;
     }
+
+    public void setChallengeId(String idChallenge) {
+        this.challenge.setIdChallenge(idChallenge);
+    }
 }

@@ -20,4 +20,11 @@ public class TrainingLeague {
     private List<String> expecialities;
     private LocalDate dateConvocationEnd;
     private String img;
+
+    public TrainingLeague(String id, String name, String description, LocalDate dateConvocationEnd) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.dateConvocationEnd = dateConvocationEnd;
+    }
 }

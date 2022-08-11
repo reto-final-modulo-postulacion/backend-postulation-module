@@ -28,7 +28,8 @@ implements ChallengeRepository
                 challenge.getName(),
                 challenge.getDescription(),
                 challenge.getUrlDocument(),
-                challenge.getClosingDate()
+                challenge.getClosingDate(),
+                challenge.getLanguages()
         )).flatMap(challengeDocument -> Mono.just(challenge));
     }
 }

@@ -1,6 +1,7 @@
 package co.com.sofka.usecase.postulantusecase.findpostulant;
 
 import co.com.sofka.model.postulant.DocumentUser;
+import co.com.sofka.model.postulant.Phone;
 import co.com.sofka.model.postulant.Postulant;
 import co.com.sofka.model.postulant.gateways.PostulantRepository;
 import org.junit.jupiter.api.Test;
@@ -24,7 +25,8 @@ class FindPostulantUseCaseTest {
 
     @Test
     void findPostulant() {
-        Postulant postulant = new Postulant("1", new DocumentUser(), "1990-02-10", "Peruano", "5555555", "1");
+        Postulant postulant = new Postulant("1", new DocumentUser(), "1990-02-10", "Peruano",
+                new Phone("57", "555555"), "1", "email@gmail.com");
 
         Mono<Postulant> postulantMono = Mono.just(postulant);
         when(postulantRepository.findById("1")).thenReturn(postulantMono);

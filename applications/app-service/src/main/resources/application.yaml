@@ -15,6 +15,17 @@ spring:
     mongodb:
       uri: "mongodb+srv://certhakzu:mongoPrueba123@cluster0-prueba.kuwmb.mongodb.net/?retryWrites=true&w=majority"
       database: "postulation"
+  mail:
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: 'true'
+          auth: 'true'
+    host: smtp.gmail.com
+    username: 'sofkaprueba111@gmail.com'
+    password: 'hzhqaczgjjuqpkng'
+    port: '587'
 management:
   endpoints:
     web:

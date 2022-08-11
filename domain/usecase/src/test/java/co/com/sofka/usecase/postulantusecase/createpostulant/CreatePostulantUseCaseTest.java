@@ -1,6 +1,7 @@
 package co.com.sofka.usecase.postulantusecase.createpostulant;
 
 import co.com.sofka.model.postulant.DocumentUser;
+import co.com.sofka.model.postulant.Phone;
 import co.com.sofka.model.postulant.Postulant;
 import co.com.sofka.model.postulant.gateways.PostulantRepository;
 import co.com.sofka.usecase.postulantusecase.createpostulant.CreatePostulantUseCase;
@@ -27,7 +28,8 @@ class CreatePostulantUseCaseTest {
 
     @Test
     void createPostulant() {
-        Postulant postulant = new Postulant("1", new DocumentUser(), "1990-02-10", "Colombiano", "555555", "1");
+        Postulant postulant = new Postulant("1", new DocumentUser(), "1990-02-10", "Colombiano",
+                new Phone("57", "555555"), "1", "email@gmail.com");
 
         Mono<Postulant> postulantMono = Mono.just(postulant);
         when(postulantRepository.save(postulant)).thenReturn(postulantMono);
