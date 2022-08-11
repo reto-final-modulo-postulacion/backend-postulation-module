@@ -35,7 +35,7 @@ class AddChallengeUseCaseTest {
         Mono<Postulant> postulantMono = Mono.just(postulant);
         when(postulantRepository.update("1", postulant)).thenReturn(postulantMono);
 
-        StepVerifier.create(addChallengeUseCase.addChallenge("1"))
+        StepVerifier.create(addChallengeUseCase.addChallenge("1", "1"))
                 .expectNextMatches(postulant1 -> postulant1.getId().equals("1"))
                 .expectComplete()
                 .verify();

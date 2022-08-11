@@ -13,12 +13,12 @@ import java.util.Collections;
 @RequiredArgsConstructor
 public class AddChallengeUseCase {
     private final PostulantRepository postulantRepository;
-    private final ChallengeRepository challengeRepository;
+
 
     public Mono<Postulant> addChallenge(String idPostulant, String idChallenge){
         return postulantRepository.findById(idPostulant)
                 .map(postulant -> {
-                    postulant.
+                    postulant.setChallengeId(idChallenge);
                     return postulant;
                 }).flatMap(postulant -> postulantRepository.update(idPostulant, postulant));
     }

@@ -1,7 +1,9 @@
 package co.com.sofka.api.postulant;
 
 
+import co.com.sofka.model.challenge.Challenge;
 import co.com.sofka.model.postulant.Postulant;
+import co.com.sofka.usecase.challenge.choosechallengerandom.ChooseChallengeRandomUseCase;
 import co.com.sofka.usecase.postulantusecase.addchallenge.AddChallengeUseCase;
 import co.com.sofka.usecase.postulantusecase.assigndatesforchallenge.AssignDatesForChallengeUseCase;
 import co.com.sofka.usecase.postulantusecase.calculateage.CalculateAgeUseCase;
@@ -37,6 +39,7 @@ public class HandlerPostulant {
     private final IsSessionOnUseCase isSessionOnUseCase;
     private final FindWhoStartsTodayUseCase findWhoStartsTodayUseCase;
     private final AssignDatesForChallengeUseCase assignDatesForChallengeUseCase;
+
 
 
     public Mono<ServerResponse> listenPostCreatePostulantUseCase(ServerRequest serverRequest){
@@ -88,13 +91,13 @@ public class HandlerPostulant {
                 .body(registerToTrainingUseCase.registerToTraining(idTraining, idPostulant), Postulant.class);
     }
 
-    public Mono<ServerResponse> listenPutAddChallengeUseCase(ServerRequest serverRequest){
+    public Mono<ServerResponse> listenGetAddChallengeUseCase(ServerRequest serverRequest){
         var idChallenge = serverRequest.pathVariable("idChallenge");
         var idPostulant = serverRequest.pathVariable("idPostulant");
         return ServerResponse
                 .ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(addChallengeUseCase.addChallenge(idPostulant), Postulant.class);
+                .body(addChallengeUseCase.addChallenge(idPostulant, idChallenge), Postulant.class);
     }
 
     public Mono<ServerResponse> listenGetCalculateAgeUseCase(ServerRequest serverRequest){
@@ -130,4 +133,6 @@ public class HandlerPostulant {
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(assignDatesForChallengeUseCase.assignDatesForChallenge(id, initialDate, finalDate), Postulant.class);
     }
+
+
 }

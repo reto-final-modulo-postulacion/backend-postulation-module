@@ -3,6 +3,7 @@ package co.com.sofka.api.challenge;
 
 
 import co.com.sofka.model.challenge.Challenge;
+import co.com.sofka.usecase.challenge.choosechallengerandom.ChooseChallengeRandomUseCase;
 import co.com.sofka.usecase.challenge.createchallenge.CreateChallengeUseCase;
 import co.com.sofka.usecase.challenge.deletechallenge.DeleteChallengeUseCase;
 import co.com.sofka.usecase.challenge.findallchallenge.FindAllChallengeUseCase;
@@ -25,6 +26,7 @@ public class HandlerChallenge {
     private final FindAllChallengeUseCase findAllChallengeUseCase;
     private final FindChallengeUseCase findChallengeUseCase;
     private final UpdateChallengeUseCase updateChallengeUseCase;
+    private final ChooseChallengeRandomUseCase chooseChallengeRandomUseCase;
 
     Mono<ServerResponse> listenPostCreateChallengeUseCase(ServerRequest serverRequest){
         return serverRequest.bodyToMono(Challenge.class)
@@ -64,5 +66,12 @@ public class HandlerChallenge {
                         .ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(updateChallengeUseCase.updateChallenge(id, challenge), Challenge.class));
+    }
+
+    public Mono<ServerResponse> listenGetChooseChallengeRandomUseCase(ServerRequest serverRequest){
+        return ServerResponse
+                .ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(chooseChallengeRandomUseCase.chooseChallengeRandom(), Challenge.class);
     }
 }

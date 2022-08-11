@@ -19,7 +19,7 @@ public class RouterRestPostulant {
                 .andRoute(GET("/api/postulant/{id}"), handler::listenGetFindPostulant)
                 .andRoute(PUT("/api/postulant/{id}"), handler::listenPutUpdatePostulant)
                 .andRoute(PUT("/api/postulant/{idTraining}/{idPostulant}"), handler::listenPutRegisterToTrainingUseCase)
-                .andRoute(PUT("/api/postulant/addchallenge/{idChallenge}/{idPostulant}"), handler::listenPutAddChallengeUseCase)
+                .andRoute(GET("/api/postulant/addchallenge/{idChallenge}/{idPostulant}"), handler::listenGetAddChallengeUseCase)
                 .andRoute(GET("/api/postulant/calculateage/{id}"), handler::listenGetCalculateAgeUseCase)
                 .andRoute(GET("/api/postulant/issessionon/{id}"), handler::listenGetIsSessionOnUseCase)
                 .andRoute(GET("/api/postulant/findwhostart/{date}"), handler::listenGetFindWhoStartsTodayUseCase)
