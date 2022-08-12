@@ -8,8 +8,8 @@ import org.mockito.Mock;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
-
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.mockito.Mockito.when;
 
@@ -23,7 +23,8 @@ class FindTrainingLeagueUseCaseTest {
 
     @Test
     void findTrainingLeague() {
-        TrainingLeague trainingLeague = new TrainingLeague("1", "nombre", "drescripcion1", LocalDate.of(2022, 10, 10));
+        TrainingLeague trainingLeague = new TrainingLeague("1", "Desarollo", "descripcion", List.of(""),
+                LocalDate.of(2022, 10, 10), "img");
 
         Mono<TrainingLeague> trainingLeagueMono = Mono.just(trainingLeague);
         when(trainingLeagueRepository.findById("1")).thenReturn(trainingLeagueMono);

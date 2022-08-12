@@ -12,6 +12,7 @@ import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.mockito.Mockito.when;
 
@@ -26,7 +27,8 @@ class UpdateTrainingLeagueUseCaseTest {
 
     @Test
     void updateTrainingLeague() {
-        TrainingLeague trainingLeague = new TrainingLeague("1", "nombre", "drescripcion1", LocalDate.of(2022, 10, 10));
+        TrainingLeague trainingLeague = new TrainingLeague("1", "Desarollo", "descripcion", List.of(""),
+                LocalDate.of(2022, 10, 10), "img");
 
         Mono<TrainingLeague> trainingLeagueMono = Mono.just(trainingLeague);
         when(trainingLeagueRepository.updateTrainingLeague("1", trainingLeague)).thenReturn(trainingLeagueMono);
