@@ -26,7 +26,7 @@ public class SentinelPostulant implements CommandLineRunner {
     private JavaMailSender emailSender;
     private final FindWhoStartsTodayUseCase findWhoStartsTodayUseCase;
 
-    @Scheduled(cron = "0 0 0 * * 2-6")
+    @Scheduled(cron = "0 0 0 * * ?")
     public Mono<Void> verifyOnHOurEspecify() throws Exception {
         // System.out.println("A UNA HORA ESPECIFICA");
 
@@ -44,9 +44,9 @@ public class SentinelPostulant implements CommandLineRunner {
             String today = year +"-"+ month +"-"+ day;
             var emails = findWhoStartsTodayUseCase.findWhoStartToday(today).collectList().block();
 
-            System.out.println(emails);
+            /*System.out.println(emails);
             System.out.println(today);
-            String[] arrayEmails = new String[emails.size()];
+            String[] arrayEmails = new String[emails.size()];*/
 
             emails.forEach(s -> {
                 try {
