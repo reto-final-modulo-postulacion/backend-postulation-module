@@ -1,6 +1,7 @@
 package co.com.sofka.api.postulant;
 
 
+
 import co.com.sofka.model.challenge.Challenge;
 import co.com.sofka.model.postulant.Postulant;
 import co.com.sofka.usecase.challenge.choosechallengerandom.ChooseChallengeRandomUseCase;
@@ -145,5 +146,12 @@ public class HandlerPostulant {
                 .body(assignDatesForChallengeUseCase.assignDatesForChallenge(id, initialDate, finalDate), Postulant.class);
     }
 
-
+    /*public Mono<ServerResponse> listenPostSendMailUseCase(ServerRequest serverRequest){
+        return serverRequest
+                .bodyToMono(SimpleMail.class)
+                .flatMap(simpleMail -> ServerResponse
+                        .ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(sendMailUseCase.send(simpleMail), SimpleMail.class));
+    }*/
 }
