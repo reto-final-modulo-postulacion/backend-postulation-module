@@ -1,19 +1,24 @@
 package co.com.sofka.api.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.config.CorsRegistry;
 import org.springframework.web.reactive.config.EnableWebFlux;
 import org.springframework.web.reactive.config.WebFluxConfigurer;
+import org.springframework.web.reactive.config.WebFluxConfigurerComposite;
+
 
 @Configuration
-@EnableWebFlux
-public class CorsGlobalConfiguration implements WebFluxConfigurer {
-    @Override
-    public void addCorsMappings(CorsRegistry registry){
-        registry.addMapping("/api/**")
-                .allowedOrigins("http://localhost:4200/", "*")
-                .allowedMethods("GET", "POST", "PUT", "DELETE")
-                .allowCredentials(true)
-                .maxAge(3600);
+public class CorsGlobalConfiguration {
+
+    @Bean
+    public WebFluxConfigurer corsConfigure() {
+        return new WebFluxConfigurerComposite() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**").allowedOrigins("*")
+                        .allowedMethods("*");
+            }
+        };
     }
 }
