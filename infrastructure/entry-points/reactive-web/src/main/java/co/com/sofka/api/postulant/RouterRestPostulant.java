@@ -24,5 +24,6 @@ public class RouterRestPostulant {
                 .andRoute(GET("/api/postulant/issessionon/{id}"), handler::listenGetIsSessionOnUseCase)
                 .andRoute(GET("/api/postulant/findwhostart/{date}"), handler::listenGetFindWhoStartsTodayUseCase)
                 .andRoute(GET("/api/postulant/{id}/{initial}/{final}"), handler::listenGetAssignDatesForChallengeUseCase);
+                /*.andRoute(POST("/api/sendmail"), handler::listenPostSendMailUseCase);*/
     }
 }
