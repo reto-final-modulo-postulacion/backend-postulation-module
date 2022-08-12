@@ -15,6 +15,5 @@ public class CalculateAgeUseCase {
         LocalDate dateOfBirth = LocalDate.parse(datePostulant);
 
         return  Mono.just(LocalDate.now().getYear() - dateOfBirth.getYear());
-
     }
 }
